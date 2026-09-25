@@ -1,0 +1,40 @@
+# ---- Node / Next.js (Rehan) ----
+node_modules/
+.next/
+out/
+.env
+.env.local
+npm-debug.log*
+
+# ---- Python / ML (Quadri) ----
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.venv/
+
+# ---- Raw dataset & training junk — never commit these ----
+data/
+datasets/
+SMART-OM/
+checkpoints/
+*.pt
+*.pth
+runs/
+wandb/
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ---- Next.js extras ----
+*.tsbuildinfo
+next-env.d.ts
+
+# ---- onnxruntime-web wasm runtime, copied by scripts/copy-ort.mjs ----
+public/ort/
+
+# ---- Claude Code local settings ----
+.claude/settings.local.json
