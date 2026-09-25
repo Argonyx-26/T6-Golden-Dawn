@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "approvedBy": "Dr. Nadeem Ahmed (consulted with Dr. Safiya Noorain)",
+  "approvedOn": "2026-09-24",
+  "base_rules": [
+    { "id": "R1", "class": "healthy", "activeHabit": false, "action": "reassure", "counsel": false, "description": "Healthy, no active habit -> Reassure" },
+    { "id": "R2", "class": "healthy", "activeHabit": true, "action": "reassure", "counsel": true, "description": "Healthy but active habit -> Reassure, with habit-cessation counseling" },
+    { "id": "R3", "class": "variation", "activeHabit": false, "action": "reassure", "counsel": false, "description": "Normal variation, no active habit -> Reassure" },
+    { "id": "R4", "class": "variation", "activeHabit": true, "action": "reassure", "counsel": true, "description": "Normal variation but active habit -> Reassure, with habit-cessation counseling" },
+    { "id": "R5", "class": "opmd", "activeHabit": false, "action": "recheck14", "counsel": false, "description": "OPMD, no active habit -> Recheck in 14 days" },
+    { "id": "R6", "class": "opmd", "activeHabit": true, "action": "refer", "counsel": true, "description": "OPMD with active habit -> Refer for biopsy" },
+    { "id": "R7", "class": "oc", "activeHabit": false, "action": "refer", "counsel": false, "description": "Suspicious for oral cancer -> Refer for biopsy" },
+    { "id": "R8", "class": "oc", "activeHabit": true, "action": "refer", "counsel": true, "description": "Suspicious for oral cancer with active habit -> Refer for biopsy" }
+  ],
+  "abstain_rule": { "id": "R0", "action": null, "description": "Model not confident -> no automatic suggestion, dentist's clinical judgment" },
+  "points": {
+    "smoking_current": 2, "smoking_quit": 1, "smoking_never": 0,
+    "smokeless_current": 2, "smokeless_quit": 1, "smokeless_never": 0,
+    "areca_current": 2, "areca_quit": 1, "areca_never": 0,
+    "alcohol_current": 2, "alcohol_quit": 1, "alcohol_never": 0,
+    "family_history_oral_cancer": 1,
+    "personal_history_opmd_or_oral_cancer": 3,
+    "poorly_fitting_denture": 1
+  },
+  "escalation_thresholds": { "recheck14": 3, "refer": 5 },
+  "recheck_rules": [
+    { "id": "RC1", "change": "worse", "action": "refer", "description": "Recheck shows worse -> Refer for biopsy" },
+    { "id": "RC2", "change": "same", "action": "refer", "description": "Recheck shows unchanged -> Refer for biopsy" },
+    { "id": "RC3", "change": "better", "action": null, "description": "Recheck shows improvement -> re-evaluate using this capture's own class and habits, same as a first visit" }
+  ]
+}
