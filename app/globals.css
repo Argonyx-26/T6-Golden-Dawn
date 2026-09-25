@@ -1,0 +1,313 @@
+@import "tailwindcss";
+
+/*
+  OraTrace tokens. Calm clinical neutral base + one accent (teal).
+  Color semantics are load-bearing, never decorative:
+    warning (yellow) = the model is not confident. Nothing else is yellow.
+    danger  (red)    = refer, or a danger/error state. Nothing else is red.
+*/
+:root {
+  /* Neutrals: one cool slate-teal family. */
+  --background: #f3f5f6;
+  --surface: #ffffff;
+  --surface-2: #eaeff1; /* inset areas, read-only notes, hover on secondary */
+  --foreground: #15232a;
+  --muted: #55646b; /* secondary text, 5.6:1 on background */
+  --faint: #7b878d; /* decorative / large-only text, never body copy */
+  --border: #d5dde0;
+  --border-strong: #b7c3c8;
+
+  /* The one accent. */
+  --accent: #0d6b72;
+  --accent-hover: #0a5a60;
+  --accent-soft: #e2f0f1;
+  --accent-foreground: #ffffff;
+
+  /* Semantic: model not confident. */
+  --warning: #7a5300;
+  --warning-bg: #fdf2c4;
+  --warning-border: #e8c64d;
+
+  /* Semantic: refer / danger / error. */
+  --danger: #b42318;
+  --danger-hover: #971c13;
+  --danger-bg: #fde8e6;
+  --danger-border: #f2b8b2;
+
+  /* Soft, tinted elevation (shadows carry the foreground hue, never pure black). */
+  --shadow-card: 0 1px 2px rgb(21 35 42 / 0.05), 0 4px 16px -6px rgb(21 35 42 / 0.08);
+  --shadow-raised: 0 2px 4px rgb(21 35 42 / 0.06), 0 12px 32px -8px rgb(21 35 42 / 0.16);
+
+  /* Motion. Strong ease-out for entering/state UI; nothing in the app runs longer than 240ms. */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-press: 120ms;
+  --duration-fast: 160ms;
+  --duration-base: 220ms;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-warning-border: var(--warning-border);
+  --color-danger: var(--danger);
+  --color-danger-hover: var(--danger-hover);
+  --color-danger-bg: var(--danger-bg);
+  --color-danger-border: var(--danger-border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --shadow-card: var(--shadow-card);
+  --shadow-raised: var(--shadow-raised);
+  --ease-out: var(--ease-out-strong);
+  --ease-in-out: var(--ease-in-out-strong);
+  /* 44px: the minimum tap target for a phone/tablet used standing at the chair. */
+  --spacing-tap: 2.75rem;
+  --animate-enter: enter var(--duration-base) var(--ease-out-strong) both;
+  --animate-fade: fade var(--duration-fast) var(--ease-out-strong) both;
+}
+
+/* State entering the screen: a short rise + fade, never from scale(0). */
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.99);
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    accent-color: var(--accent);
+    caret-color: var(--accent);
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--foreground);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  h1 {
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  h2 {
+    letter-spacing: -0.01em;
+  }
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+    outline-offset: 2px;
+  }
+
+  a,
+  button,
+  label,
+  select,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+}
+
+@layer components {
+  /* Buttons: every one is at least 44px tall. Press feedback is on :active (pointer-down), not click. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: var(--spacing-tap);
+    padding: 0.625rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition-property: background-color, border-color, color, box-shadow, transform;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--ease-out-strong);
+  }
+  .btn:active:not(:disabled) {
+    transform: scale(0.98);
+    transition-duration: var(--duration-press);
+  }
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  /* File inputs hidden inside a label.btn still show the focus ring on the label. */
+  .btn:has(input:focus-visible) {
+    outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+    outline-offset: 2px;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-foreground);
+    box-shadow: 0 1px 2px rgb(13 107 114 / 0.25);
+  }
+  .btn-secondary {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--foreground);
+  }
+  .btn-danger {
+    background: var(--danger);
+    color: #fff;
+  }
+  /* Quiet text-style action that still has a full tap target. */
+  .btn-ghost {
+    padding-inline: 0.75rem;
+    color: var(--accent);
+  }
+  .btn-lg {
+    min-height: 3.25rem;
+    font-size: 1.0625rem;
+    border-radius: 0.875rem;
+  }
+
+  /* Choice buttons (segmented options, final action, Better/Same/Worse). Selected = aria-pressed. */
+  .choice {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--spacing-tap);
+    padding: 0.625rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: var(--surface);
+    color: var(--foreground);
+    font-size: 1rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition-property: background-color, border-color, color, transform;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--ease-out-strong);
+  }
+  .choice:active:not(:disabled) {
+    transform: scale(0.98);
+    transition-duration: var(--duration-press);
+  }
+  .choice[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+  /* Read-only form (fieldset disabled): keep the selection legible, drop the affordance. */
+  .choice:disabled {
+    cursor: default;
+  }
+  /* Selected but read-only: soft tint instead of the solid fill, so it doesn't read as tappable. */
+  .choice:disabled[aria-pressed="true"] {
+    background: var(--accent-soft);
+    border-color: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .choice:disabled:not([aria-pressed="true"]) {
+    color: var(--muted);
+  }
+
+  .field {
+    min-height: 3rem;
+    width: 100%;
+    padding: 0.625rem 1rem;
+    border: 1px solid var(--border-strong);
+    border-radius: 0.75rem;
+    background: var(--surface);
+    color: var(--foreground);
+    font-size: 1rem; /* 16px: iOS never zooms into the input */
+    transition: border-color var(--duration-fast) var(--ease-out-strong);
+  }
+  .field::placeholder {
+    color: var(--faint);
+  }
+  .field:focus-visible {
+    border-color: var(--accent);
+    outline-offset: 0;
+  }
+
+  .card {
+    border-radius: 1rem;
+    background: var(--surface);
+    box-shadow: var(--shadow-card), 0 0 0 1px rgb(21 35 42 / 0.06);
+  }
+
+  .label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
+}
+
+@layer components {
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover:not(:disabled) {
+      background: var(--accent-hover);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background: var(--surface-2);
+      border-color: var(--border-strong);
+    }
+    .btn-danger:hover:not(:disabled) {
+      background: var(--danger-hover);
+    }
+    .btn-ghost:hover:not(:disabled) {
+      background: var(--accent-soft);
+    }
+    .choice:hover:not(:disabled):not([aria-pressed="true"]) {
+      border-color: var(--border-strong);
+      background: var(--surface-2);
+    }
+  }
+
+  /* Reduced motion: keep fades (they aid comprehension), drop movement and scale. */
+  @media (prefers-reduced-motion: reduce) {
+    .btn:active:not(:disabled),
+    .choice:active:not(:disabled) {
+      transform: none;
+    }
+    @keyframes enter {
+      from {
+        opacity: 0;
+      }
+    }
+  }
+}
