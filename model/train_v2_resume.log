@@ -1,0 +1,20 @@
+device=cpu threads=12 seed=42 arch=efficientnet_b0 loss=ce
+balanced sampler (replacement, seed=42): expected draws/epoch {0: 438, 1: 438, 2: 438, 3: 438} of 1753
+train rows/class {'healthy': 1516, 'variation': 128, 'opmd': 89, 'oc': 20} -> 1753
+val   rows/class {'healthy': 304, 'variation': 25, 'opmd': 18, 'oc': 0} -> 347
+resume: continue unfrozen at phase-epoch 1/12, best so far val_rec=0.6319 @ ep 4
+
+== phase unfrozen: resumed at epoch 1/12, constant lr=1e-04 ==
+[unfrozen] ep 05  tr_l 0.8697 tr_F1 0.7760 | val_l 1.0224 val_F1 0.4081 val_macroRec 0.6655  (1153s)
+[unfrozen] ep 06  tr_l 0.7029 tr_F1 0.8311 | val_l 0.9230 val_F1 0.4203 val_macroRec 0.6794  (1170s)
+[unfrozen] ep 07  tr_l 0.6181 tr_F1 0.8594 | val_l 0.8482 val_F1 0.4484 val_macroRec 0.7045  (910s)
+[unfrozen] ep 08  tr_l 0.3504 tr_F1 0.9759 | val_l 0.8090 val_F1 0.4300 val_macroRec 0.6697  (989s)
+[unfrozen] ep 09  tr_l 0.5381 tr_F1 0.8744 | val_l 0.7394 val_F1 0.4534 val_macroRec 0.6813  (1015s)
+[unfrozen] ep 10  tr_l 0.5137 tr_F1 0.8980 | val_l 0.6817 val_F1 0.4695 val_macroRec 0.6875  (443s)
+[unfrozen] ep 11  tr_l 0.4537 tr_F1 0.9157 | val_l 0.6794 val_F1 0.4783 val_macroRec 0.6656  (550s)
+[unfrozen] ep 12  tr_l 0.4279 tr_F1 0.9314 | val_l 0.6078 val_F1 0.4449 val_macroRec 0.5937  (537s)
+  early stop (no val macro-recall improvement for 5)
+
+BEST val macro-recall: 0.7045 -> model/checkpoints/best_v2_efficientnet_b0.pt
+log -> model/checkpoints/train_log_v2_efficientnet_b0.csv
+summary -> {'arch': 'efficientnet_b0', 'loss': 'ce', 'gamma': 2.0, 'label_smoothing': 0.05, 'seed': 42, 'best_epoch': 7, 'best_val_macro_recall': 0.7044931773879143, 'best_ckpt': 'best_v2_efficientnet_b0.pt', 'train_csv': 'data/splits/train.csv', 'note': 'early stop + save on val macro-recall (present classes only; OC absent from val).'}

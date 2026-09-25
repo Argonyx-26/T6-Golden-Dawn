@@ -1,0 +1,82 @@
+[
+  {
+    "path": "data/SMART-OM/01. Normal/01. Unannotated/08. Lower arch/SMITA00092_R_LA.jpg",
+    "label": 0
+  },
+  {
+    "path": "data/SMART-OM/01. Normal/01. Unannotated/08. Lower arch/SMITA00164_R_LA.jpeg",
+    "label": 0
+  },
+  {
+    "path": "data/SMART-OM/01. Normal/01. Unannotated/06. Lower lip/SMITA00021_R_LL.JPG",
+    "label": 0
+  },
+  {
+    "path": "data/SMART-OM/01. Normal/01. Unannotated/05. Upper lip/SMITA00258_R_UL.jpeg",
+    "label": 0
+  },
+  {
+    "path": "data/SMART-OM/01. Normal/01. Unannotated/07. Upper arch/SMITA000221_R_UA.jpeg",
+    "label": 0
+  },
+  {
+    "path": "data/SMART-OM/02. Variation from normal/01. Unannotated/01. Dorsal tongue/SMITA00216_W_DT.jpeg",
+    "label": 1
+  },
+  {
+    "path": "data/SMART-OM/02. Variation from normal/01. Unannotated/01. Dorsal tongue/SMITA00211_R_DT.jpg",
+    "label": 1
+  },
+  {
+    "path": "data/SMART-OM/02. Variation from normal/01. Unannotated/03. Left buccal mucosa/SMITA00191_R_LB.jpg",
+    "label": 1
+  },
+  {
+    "path": "data/SMART-OM/02. Variation from normal/01. Unannotated/03. Left buccal mucosa/SMITA00255_R_LB.jpg",
+    "label": 1
+  },
+  {
+    "path": "data/SMART-OM/02. Variation from normal/01. Unannotated/04. Right buccal mucosa/SMITA00197_R_RB.jpg",
+    "label": 1
+  },
+  {
+    "path": "data/SMART-OM/03. OPMD/01. Unannotated/04. Right buccal mucosa/SMITA00017_W_RB.jpg",
+    "label": 2
+  },
+  {
+    "path": "data/SMART-OM/03. OPMD/01. Unannotated/04. Right buccal mucosa/SMITA00007_W_RB.jpg",
+    "label": 2
+  },
+  {
+    "path": "data/SMART-OM/03. OPMD/01. Unannotated/03. Left buccal mucosa/SMITA00273_W_LB.jpg",
+    "label": 2
+  },
+  {
+    "path": "data/SMART-OM/03. OPMD/01. Unannotated/03. Left buccal mucosa/SMITA00035_R_LB.JPG",
+    "label": 2
+  },
+  {
+    "path": "data/SMART-OM/03. OPMD/01. Unannotated/04. Right buccal mucosa/SMITA00034_R_RB1.JPG",
+    "label": 2
+  },
+  {
+    "path": "data/SMART-OM/04. Oral Cancer/01. Unannotated/03. Left buccal mucosa/Ca 9.png",
+    "label": 3
+  },
+  {
+    "path": "data/SMART-OM/04. Oral Cancer/01. Unannotated/06. Lower lip/7252.jpeg",
+    "label": 3
+  },
+  {
+    "path": "data/SMART-OM/04. Oral Cancer/01. Unannotated/02. Ventral tongue/6765.jpg",
+    "label": 3
+  },
+  {
+    "path": "data/SMART-OM/04. Oral Cancer/01. Unannotated/02. Ventral tongue/6766.jpg",
+    "label": 3
+  },
+  {
+    "path": "data/SMART-OM/04. Oral Cancer/01. Unannotated/02. Ventral tongue/Ca 2.jpg",
+    "label": 3
+  }
+]

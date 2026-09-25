@@ -1,0 +1,10 @@
+[
+  {
+    "id": "ccr38727-fig-0001",
+    "path": "data/hard_cases/ccr38727-fig-0001.jpg",
+    "expect": "not_cleared",
+    "source": "Wiley case-report figure, internal filename ccr38727-fig-0001 (caption pending manual confirmation; suspected DOI 10.1002/ccr3.38727 returned 404 on Crossref).",
+    "report": "S1: app answered 'Healthy 90.2%' on a large lobulated anterior-gingival mass that splays the teeth; p[opmd]+p[oc] = 0.067. Histology TBD (likely reactive gingival lesion e.g. PGCG/pyogenic granuloma), but certainly not 'no suspicious features'.",
+    "check": "vector assertion on REPORTED_POST_T probabilities (no image needed); optional image check when the file exists locally."
+  }
+]
