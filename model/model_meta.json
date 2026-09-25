@@ -1,0 +1,75 @@
+{
+  "version": "1.0.0",
+  "_status": "Thursday final: efficientnet_b0 winner, calibrated, canonical oratrace.onnx. Test evaluated once (see metrics.md / parity.json).",
+  "input": {
+    "name": "input",
+    "shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "dtype": "float32",
+    "order": "RGB"
+  },
+  "resize": "whole image squashed to 224x224, NO crop",
+  "normalize": {
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "outputs": {
+    "logits": [
+      1,
+      4
+    ],
+    "cam": [
+      1,
+      4,
+      7,
+      7
+    ]
+  },
+  "classes": [
+    "healthy",
+    "variation",
+    "opmd",
+    "oc"
+  ],
+  "display_labels": [
+    "No suspicious features detected",
+    "Variation from normal",
+    "OPMD (suspicious)",
+    "Suspicious lesion"
+  ],
+  "T": 1.875938208266764,
+  "tau": 0.45,
+  "refer_floor": 0.05,
+  "blur_min": 45.7,
+  "_notes": [
+    "S1 bugfix 24 Sep: refer_floor 0.45 -> 0.05 (sensitivity-first). A confident 'Healthy' verdict was the worst failure mode: a case-report image of a large gingival mass got 90.2% healthy (p[opmd]+p[oc]=0.067 < 0.45). refer_floor now gates on p[opmd]+p[oc] >= 0.05 and overrides the argmax, so such images route to 'Suspicious / not cleared'.",
+    "Cost (val, tau=0.45): coverage 91% -> 57%; 50% of healthy referred, 8/43 abnormal still missed because their p[opmd]+p[oc] ~ 0. Lowering rf to ~0.02-0.03 buys more sensitivity (5 missed) at ~44-49% coverage; swap freely in this file anytime.",
+    "SMART-OM is sketch-art renderings of intraoral photos (see Sci Data 10.1038/s41597-026-06954-5); healthy is 87% of the data. Real photographic lesions (this bug) are out-of-distribution -> the model's healthy bias and miscalibration are expected, not a Python/ONNX bug.",
+    "The app MUST apply softmax(logits / T) before display AND before the refer_floor check (CONTRACT v2 step 1). The reported 90.2% matches post-T softmax, so the refer gate operates on the same calibrated probabilities.",
+    "T, tau final (calibrated on val only by scripts/calibrate.py).",
+    "blur_min=45.7 = 5th percentile of cv2.Laplacian(CV_64F).var() on train images (resized to 512 wide, grayscale).",
+    "OC (class 3) has no verifiable patient IDs -> kept train-only; absent from val/test (see data/DATASET_NOTES.md, BLOCKER).",
+    "Backbone: efficientnet_b0 pretrained (3 frozen + 15 unfrozen epochs), best val macro-F1 0.4329 at epoch 14."
+  ],
+  "_calibrated": {
+    "arch": "efficientnet_b0",
+    "on_split": "data/splits/val.csv",
+    "fitted_T": 1.875938208266764,
+    "tau": 0.45,
+    "refer_floor": 0.05,
+    "min_coverage": 0.9,
+    "note": "T+tau tuned on val only; test evaluated once more for the S1 decision-rule change (see metrics.md / parity.json)."
+  }
+}
