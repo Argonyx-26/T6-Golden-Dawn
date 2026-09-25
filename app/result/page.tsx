@@ -9,6 +9,7 @@ import { MOCK_VERSION } from "@/lib/model";
 import { camSlice } from "@/lib/postprocess";
 import { heatmapUrl } from "@/lib/heatmap";
 import DecisionPanel from "@/components/DecisionPanel";
+import ClinicalDisclaimer from "@/components/ClinicalDisclaimer";
 
 // Class order per CONTRACT.md.
 const CLASS_LABELS = ["Healthy", "Normal variation", "OPMD", "Oral cancer"];
@@ -44,7 +45,7 @@ function Result() {
   // ponytail: blob URL never revoked (one per result view, freed on reload);
   // revoking in effect cleanup breaks the image under StrictMode's double effect.
   const photoUrl = useMemo(
-    () => (capture ? URL.createObjectURL(capture.photo) : null),
+    () => (capture ? URL.createObjectURL(capture.lesionPhoto) : null),
     [capture]
   );
 
@@ -124,6 +125,7 @@ function Result() {
       </section>
 
       <div className="flex flex-col gap-6">
+        <ClinicalDisclaimer />
         <section aria-label="Model output" className="card flex flex-col gap-5 p-5 md:p-6">
           <div className="flex flex-col gap-1">
             <p className="label">Top class</p>

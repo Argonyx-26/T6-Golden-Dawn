@@ -10,6 +10,7 @@ export interface Patient {
   age: number;
   sex: "male" | "female" | "other";
   phone: string;
+  profilePhoto?: Blob;
 }
 
 export type HabitStatus = "current" | "quit" | "never";
@@ -44,7 +45,7 @@ export interface Capture {
   id?: number;
   lesionId: number;
   takenAt: Date;
-  photo: Blob; // downscaled to max 1024px, JPEG
+  lesionPhoto: Blob; // downscaled to max 1024px, JPEG
   modelOutput: ClassifyResult;
   probs: number[]; // softmax(logits / T), class order per CONTRACT.md
   abstain: boolean;
@@ -85,4 +86,20 @@ db.version(1).stores({
   captures: "++id, lesionId, takenAt",
   decisions: "++id, captureId",
   recalls: "++id, lesionId, dueDate, status",
+});
+
+db.version(2).stores({
+  patients: "++id, name, phone",
+  habits: "++id, &patientId",
+  lesions: "++id, patientId, site",
+  captures: "++id, lesionId, takenAt",
+  decisions: "++id, captureId",
+  recalls: "++id, lesionId, dueDate, status",
+}).upgrade(async (tx) => {
+  await tx.table("captures").toCollection().modify((capture) => {
+    if (capture.photo && !capture.lesionPhoto) {
+      capture.lesionPhoto = capture.photo;
+      delete capture.photo;
+    }
+  });
 });

@@ -9,6 +9,7 @@ import { MOCK_VERSION } from "@/lib/model";
 import { camSlice } from "@/lib/postprocess";
 import { heatmapUrl } from "@/lib/heatmap";
 import DecisionPanel from "@/components/DecisionPanel";
+import ClinicalDisclaimer from "@/components/ClinicalDisclaimer";
 
 // Risk-score change (0-1) that counts as better/worse; smaller moves are "same". First guess, tune with the dentist.
 const CHANGE_THRESHOLD = 0.05;
@@ -136,6 +137,8 @@ function Compare() {
         </div>
       </header>
 
+      <ClinicalDisclaimer />
+
       <div className="grid gap-10 md:grid-cols-2 md:gap-12">
         <Column capture={a} visit={li + 1} showHeatmap={showHeatmap} />
         <Column capture={b} visit={ri + 1} showHeatmap={showHeatmap} />
@@ -214,7 +217,7 @@ function Column({
 }) {
   // ponytail: blob URLs are never revoked (freed on reload); revoking in effect
   // cleanup breaks the image under StrictMode's double effect.
-  const photoUrl = useMemo(() => URL.createObjectURL(capture.photo), [capture]);
+  const photoUrl = useMemo(() => URL.createObjectURL(capture.lesionPhoto), [capture]);
   const top = capture.probs.indexOf(Math.max(...capture.probs));
   const heatmap = useMemo(
     () => heatmapUrl(camSlice(capture.modelOutput.cam, top)),

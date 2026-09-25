@@ -1,76 +1,43 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { useLiveQuery } from "dexie-react-hooks";
-import { db } from "@/lib/db";
+import ClinicalDisclaimer from "@/components/ClinicalDisclaimer";
+import PatientAvatar from "@/components/PatientAvatar";
 
-export default function Home() {
-  const [query, setQuery] = useState("");
-
-  const patients = useLiveQuery(async () => {
-    const all = await db.patients.toArray();
-    const q = query.trim().toLowerCase();
-    if (!q) return all;
-    return all.filter(
-      (p) => p.name.toLowerCase().includes(q) || p.phone.includes(q)
-    );
-  }, [query]);
-
-  const searching = query.trim() !== "";
-
+export default function PatientsPage() {
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-6 px-4 py-8 md:px-8">
-      <div className="flex flex-wrap items-center justify-between gap-4">
+    <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-4 py-8 md:px-8 md:py-10">
+      <header className="flex flex-col gap-2">
         <h1 className="text-3xl font-semibold">Patients</h1>
-        <Link href="/patient/new" className="btn btn-primary">
-          New patient
-        </Link>
-      </div>
+        <p className="text-muted">Choose how you want to continue.</p>
+      </header>
 
-      <label className="flex flex-col gap-1.5">
-        <span className="sr-only">Search patients</span>
-        <input
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search by name or phone"
-          enterKeyHint="search"
-          className="field"
+      <ClinicalDisclaimer />
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <PatientChoice
+          href="/patient/new"
+          label="New Patient"
+          description="Start a new patient record and habits intake."
         />
-      </label>
-
-      {patients?.length === 0 && (
-        <div className="animate-fade flex flex-col items-start gap-3 rounded-2xl bg-surface-2 px-5 py-8">
-          <p className="text-lg font-medium">{searching ? "No patient matches that search." : "No patients yet."}</p>
-          <p className="text-muted">
-            {searching
-              ? "Check the spelling or search by the 10-digit phone number."
-              : "Add the first patient to start a screening."}
-          </p>
-          {!searching && (
-            <Link href="/patient/new" className="btn btn-primary">
-              Add a patient
-            </Link>
-          )}
-        </div>
-      )}
-
-      {!!patients?.length && (
-        <ul className="card divide-y divide-border overflow-hidden">
-          {patients.map((p) => (
-            <li key={p.id}>
-              <Link
-                href={`/patient?id=${p.id}`}
-                className="flex min-h-16 items-center justify-between gap-4 px-5 py-3 transition-colors duration-150 hover:bg-surface-2 active:bg-surface-2"
-              >
-                <span className="text-lg font-medium">{p.name}</span>
-                <span className="tabular-nums text-muted">{p.phone}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+        <PatientChoice
+          href="/patients/list"
+          label="Existing Patient"
+          description="Find a patient and review their record."
+        />
+      </div>
     </div>
+  );
+}
+
+function PatientChoice({ href, label, description }: { href: string; label: string; description: string }) {
+  return (
+    <Link href={href} className="card flex min-h-56 flex-col items-start justify-between gap-6 p-6 transition-colors hover:bg-surface-2">
+      <PatientAvatar label="Patient" size="md" />
+      <span className="flex flex-col gap-1">
+        <span className="text-xl font-semibold">{label}</span>
+        <span className="text-muted">{description}</span>
+      </span>
+    </Link>
   );
 }

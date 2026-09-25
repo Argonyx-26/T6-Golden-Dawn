@@ -10,6 +10,7 @@ import { ACTION_LABEL, overrideNote } from "@/lib/rules";
 import { getReminderDays, recallStatus, waLink } from "@/lib/recall";
 import { getProfile } from "@/lib/profile";
 import HabitFields, { type HabitFormValue } from "@/components/HabitFields";
+import PatientAvatar from "@/components/PatientAvatar";
 import type { RecallStatus } from "@/lib/recall";
 
 // Overdue is the one recall state that is a danger; the rest stay in the neutral/accent family.
@@ -101,8 +102,10 @@ function PatientDetail() {
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-10 px-4 py-8 md:px-8">
       <header className="flex flex-wrap items-end justify-between gap-4">
-        <div className="flex flex-col gap-1">
-          <Link href="/patients" className="btn btn-ghost -ml-3 self-start text-muted">
+        <div className="flex items-start gap-4">
+          <PatientAvatar profilePhoto={patient.profilePhoto} label={patient.name} />
+          <div className="flex flex-col gap-1">
+          <Link href="/patients/list" className="btn btn-ghost -ml-3 self-start text-muted">
             All patients
           </Link>
           <h1 className="text-3xl font-semibold">{patient.name}</h1>
@@ -110,6 +113,7 @@ function PatientDetail() {
             {patient.age} yrs · <span className="capitalize">{patient.sex}</span> ·{" "}
             <span className="tabular-nums">{patient.phone}</span>
           </p>
+          </div>
         </div>
         <Link href={`/capture?patientId=${id}`} className="btn btn-primary btn-lg">
           New capture

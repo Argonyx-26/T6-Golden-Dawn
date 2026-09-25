@@ -140,7 +140,7 @@ function CaptureFlow() {
       const captureId = (await db.captures.add({
         lesionId,
         takenAt: now(),
-        photo: blob,
+        lesionPhoto: blob,
         modelOutput,
         probs,
         abstain,
