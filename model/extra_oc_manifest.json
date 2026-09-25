@@ -1,0 +1,172 @@
+{
+  "source_name": "newDATA",
+  "source_files": 18,
+  "unique_added": 17,
+  "duplicates_skipped": [
+    {
+      "sha256": "ce76dcc6b2f64b9fdac04ba2c70fc603764f19acf742dc5e5c18f34b7bd6318c",
+      "kept": "buccal/WhatsApp Image 2026-09-25 at 12.38.07 (1).jpeg",
+      "skipped": "buccal/WhatsApp Image 2026-09-25 at 12.38.07.jpeg"
+    }
+  ],
+  "existing_dataset_overlaps_skipped": [],
+  "label": 3,
+  "class_name": "oc",
+  "split_policy": "train_only; source has no verified patient IDs",
+  "train_csv": "data/splits/train_oc_augmented.csv",
+  "records": [
+    {
+      "source_relative": "buccal/WhatsApp Image 2026-09-25 at 12.38.01 (1).jpeg",
+      "sha256": "84af2a02c4599aeee7daf5c177ddbdfdb4b06f3ad32262015dc944e36aea5376",
+      "width": 1280,
+      "height": 960,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/84af2a02c4599aee.jpeg"
+    },
+    {
+      "source_relative": "buccal/WhatsApp Image 2026-09-25 at 12.38.02 (1).jpeg",
+      "sha256": "5d9e4b90fd47b45ce4607aad50299a217517f95aae8037edf9e8084231e89312",
+      "width": 1280,
+      "height": 960,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/5d9e4b90fd47b45c.jpeg"
+    },
+    {
+      "source_relative": "buccal/WhatsApp Image 2026-09-25 at 12.38.04 (2).jpeg",
+      "sha256": "24d5aad2f886327c9a3f8ebe7ea2df4ebd3f6cbab9d1c7b1403fba7457d5cbe4",
+      "width": 1462,
+      "height": 1487,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/24d5aad2f886327c.jpeg"
+    },
+    {
+      "source_relative": "buccal/WhatsApp Image 2026-09-25 at 12.38.05.jpeg",
+      "sha256": "d0514457936b9ba82ddc46ce0363efa6cfd41a8bcc912ee974fc10342c7a3859",
+      "width": 960,
+      "height": 1280,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/d0514457936b9ba8.jpeg"
+    },
+    {
+      "source_relative": "buccal/WhatsApp Image 2026-09-25 at 12.38.07 (1).jpeg",
+      "sha256": "ce76dcc6b2f64b9fdac04ba2c70fc603764f19acf742dc5e5c18f34b7bd6318c",
+      "width": 1200,
+      "height": 1600,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/ce76dcc6b2f64b9f.jpeg"
+    },
+    {
+      "source_relative": "gingiva/WhatsApp Image 2026-09-25 at 12.38.03 (2).jpeg",
+      "sha256": "13a63a25877ed23ab867e74416e9f22198ac7e9f2c863970c79461c1c4bac01a",
+      "width": 1600,
+      "height": 1197,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/13a63a25877ed23a.jpeg"
+    },
+    {
+      "source_relative": "gingiva/WhatsApp Image 2026-09-25 at 12.38.08.jpeg",
+      "sha256": "d0be02267215a94848cabb419ee57e7cf38c14afb80366c591e16b6151bdd463",
+      "width": 1200,
+      "height": 1600,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/d0be02267215a948.jpeg"
+    },
+    {
+      "source_relative": "lateral toung/WhatsApp Image 2026-09-25 at 12.38.01 (2).jpeg",
+      "sha256": "fe1c091ae3cd0c97196b080bf2cbb12e5e0b8ee9c0e21759edeea5066c360257",
+      "width": 1280,
+      "height": 960,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/fe1c091ae3cd0c97.jpeg"
+    },
+    {
+      "source_relative": "lateral toung/WhatsApp Image 2026-09-25 at 12.38.01.jpeg",
+      "sha256": "4e91420f0e47278c6386f78dd6a25a8a91a7ef8d9bf6c1bd4a24886caa6c8a03",
+      "width": 1280,
+      "height": 960,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/4e91420f0e47278c.jpeg"
+    },
+    {
+      "source_relative": "lateral toung/WhatsApp Image 2026-09-25 at 12.38.02.jpeg",
+      "sha256": "85f09896cff3a20051821b9d39b4a19a16a54b2865f7e4b3c14c22197ecbaefd",
+      "width": 1280,
+      "height": 960,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/85f09896cff3a200.jpeg"
+    },
+    {
+      "source_relative": "lateral toung/WhatsApp Image 2026-09-25 at 12.38.03 (1).jpeg",
+      "sha256": "57631cfa690de4b7c23612192e50f29a7083a9299d7446ef98ccecdb6095dea1",
+      "width": 960,
+      "height": 1280,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/57631cfa690de4b7.jpeg"
+    },
+    {
+      "source_relative": "lateral toung/WhatsApp Image 2026-09-25 at 12.38.03.jpeg",
+      "sha256": "59772a05257f7a1e83318c19acc15de79367ca95b7e0d4e22765dbefd4653694",
+      "width": 960,
+      "height": 1280,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/59772a05257f7a1e.jpeg"
+    },
+    {
+      "source_relative": "lateral toung/WhatsApp Image 2026-09-25 at 12.38.09.jpeg",
+      "sha256": "d799c99273279f89c01a10f89664de265d316dbe30faa99f739119436d223e31",
+      "width": 1200,
+      "height": 1600,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/d799c99273279f89.jpeg"
+    },
+    {
+      "source_relative": "lateral toung/WhatsApp Image 2026-09-25 at 12.38.10.jpeg",
+      "sha256": "fc1191e13eb23a56509e897354c2283674c758defc2ccbc4e60730490c47cbef",
+      "width": 1200,
+      "height": 1600,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/fc1191e13eb23a56.jpeg"
+    },
+    {
+      "source_relative": "pallet/WhatsApp Image 2026-09-25 at 12.38.04.jpeg",
+      "sha256": "1a715f18feea21171b25e6871706afcc1fc623f5c29552497edd447f6760d3e2",
+      "width": 1280,
+      "height": 960,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/1a715f18feea2117.jpeg"
+    },
+    {
+      "source_relative": "pallet/WhatsApp Image 2026-09-25 at 12.38.10 (1).jpeg",
+      "sha256": "c4662b63216c137a3de27b7cd4e53755ddeab4a52b1d781cbcdcdb5019572fca",
+      "width": 1200,
+      "height": 1600,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/c4662b63216c137a.jpeg"
+    },
+    {
+      "source_relative": "pallet/WhatsApp Image 2026-09-25 at 12.38.11.jpeg",
+      "sha256": "9c6eeabf11f70c06565925a8202a099890005c2568cccea00d2e358b0aba3f11",
+      "width": 1200,
+      "height": 1600,
+      "mode": "RGB",
+      "label": 3,
+      "repo_path": "data/external_oc/9c6eeabf11f70c06.jpeg"
+    }
+  ]
+}

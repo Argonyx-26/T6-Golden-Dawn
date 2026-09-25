@@ -1,0 +1,58 @@
+{
+  "onnx": "oratrace.onnx",
+  "split": "test.csv",
+  "T": 1.59947,
+  "tau": 0.2,
+  "refer_floor": 0.05,
+  "blur_min": 45.7,
+  "n": 342,
+  "coverage": 0.4298,
+  "macro_f1_answered": 0.2661,
+  "macro_f1_all_preds": 0.369,
+  "blur_warn_frac": 0.0,
+  "decision_rule": "v2 sensitivity-first (CONTRACT.md)",
+  "screen": {
+    "cleared_as_healthy_pool": 0.347953216374269,
+    "healthy_cleared": 0.38461538461538464,
+    "abnormal_cleared": 0.09302325581395349,
+    "screen_sensitivity_of_abnormal_not_cleared": 0.9069767441860465,
+    "referred_frac": 0.5701754385964912,
+    "not_confident_frac": 0.0,
+    "per_class_answered": {
+      "healthy": 140,
+      "variation": 6,
+      "opmd": 1,
+      "oc": 0
+    }
+  },
+  "per_class": {
+    "healthy": {
+      "tp": 222,
+      "fn": 77,
+      "fp": 11,
+      "precision": 0.9528,
+      "recall": 0.7425
+    },
+    "variation": {
+      "tp": 13,
+      "fn": 12,
+      "fp": 66,
+      "precision": 0.1646,
+      "recall": 0.52
+    },
+    "opmd": {
+      "tp": 9,
+      "fn": 9,
+      "fp": 19,
+      "precision": 0.3214,
+      "recall": 0.5
+    },
+    "oc": {
+      "tp": 0,
+      "fn": 0,
+      "fp": 2,
+      "precision": 0.0,
+      "recall": 0.0
+    }
+  }
+}

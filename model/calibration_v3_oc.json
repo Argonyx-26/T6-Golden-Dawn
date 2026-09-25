@@ -1,0 +1,9 @@
+{
+  "T": 1.58435,
+  "tau": 0.2,
+  "refer_floor": 0.05,
+  "val_nll_T": 0.5453245639801025,
+  "val_nll_1": 0.6068314909934998,
+  "onnx": "oratrace_v3_oc.onnx",
+  "split": "val.csv"
+}
